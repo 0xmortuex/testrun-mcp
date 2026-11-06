@@ -66,6 +66,9 @@ MIXED = {
 
 
         def test_ok():
+            # JUnit times are rounded to ms: without a measurable test, "slowest" is absent
+            # (correctly), and a fast CI runner would make this test flaky.
+            __import__("time").sleep(0.05)
             assert True
     """,
 }
